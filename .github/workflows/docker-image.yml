@@ -29,12 +29,11 @@ jobs:
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKER_USER }}
           DOCKERHUB_TOKEN: ${{ secrets.DOCKER_PASSWORD}}
-          NEW_VERSION: ${{ steps.version.outputs.version }}
-
         run : |
           echo "Loing starting..."
           docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_TOKEN
       - name: Build the Docker image
+        NEW_VERSION: ${{ steps.version.outputs.version }}
         run:  |
           docker build  -t alemanadigital/docker-graphql:$NEW_VERSION .
           docker build  -t alemanadigital/docker-graphql:latest .
