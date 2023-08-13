@@ -40,6 +40,8 @@ jobs:
           docker build  -t alemanadigital/docker-graphql:latest .
 
       - name: Push the Docker image to the repository
+        env:
+          NEW_VERSION: ${{ steps.version.outputs.version }}
         run: |
          docker push alemanadigital/docker-graphql:$NEW_VERSION
          docker push alemanadigital/docker-graphql:latest
