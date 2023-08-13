@@ -26,9 +26,12 @@ jobs:
           docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_TOKEN
       - name: Build the Docker image
         run: docker build  -t alemanadigital/docker-graphql:0.0.1 .
+        run: docker build  -t alemanadigital/docker-graphql:latest .
 
       - name: Push the Docker image to the repository
         run: docker push alemanadigital/docker-graphql:0.0.1
+        run: docker push alemanadigital/docker-graphql:latest
+
 
 
     # - uses: actions/checkout@v3
