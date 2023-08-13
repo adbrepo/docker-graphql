@@ -33,7 +33,8 @@ jobs:
           echo "Loing starting..."
           docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_TOKEN
       - name: Build the Docker image
-        NEW_VERSION: ${{ steps.version.outputs.version }}
+        env:
+          NEW_VERSION: ${{ steps.version.outputs.version }}
         run:  |
           docker build  -t alemanadigital/docker-graphql:$NEW_VERSION .
           docker build  -t alemanadigital/docker-graphql:latest .
